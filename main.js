@@ -17,10 +17,13 @@ let resetButton = document.getElementById("reset-button");
 let chances = 5;
 let gameOver = false;
 let chanceArea = document.getElementById("chance-area");
-let history=[]
+let history=[];
 
 playButton.addEventListener("click",play);
 resetButton.addEventListener("click",reset);
+userInput.addEventListener("focus", function(){
+    userInput.value="";
+})
 
 function pickRandomNum() {
     computerNum = Math.floor(Math.random()*100)+1;
@@ -50,7 +53,8 @@ function play(){
         resultArea.textContent ="DOWN!!!!";
 
     }else {
-        resultArea.textContent ="맞추셨습니다.!!!!";        
+        resultArea.textContent ="맞추셨습니다.!!!!"; 
+        gameOver=true;       
     }
 
     history.push(userValue)
